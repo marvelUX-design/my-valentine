@@ -1,30 +1,38 @@
+/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+/* Reset & Body */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: white;
-    font-family: "Nunito", sans-serif;
     flex-direction: column;
-  }
-  
-  .container {
+    margin: 0;
+    height: 100vh;
+    background-color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Main container */
+.container {
     text-align: center;
-  }
-  
-  h1 {
+    padding: 20px;
+}
+
+/* Heading */
+h1 {
     font-size: 2.5em;
     color: #d32f2f;
-  }
-  
-  .buttons {
+    margin: 20px 0;
+}
+
+/* Buttons container */
+.buttons {
     margin-top: 20px;
-  }
-  
-  .yes-button {
+}
+
+/* Yes button */
+.yes-button {
     font-size: 1.5em;
     padding: 10px 20px;
     margin-right: 10px;
@@ -33,30 +41,38 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+    transition: background-color 0.3s;
+}
 
-  .yes-button:hover{
+.yes-button:hover {
     background-color: #e03777;
-  }
-  
-  .no-button {
+}
+
+/* No button */
+.no-button {
     font-size: 1.5em;
     padding: 10px 20px;
     background-color: #d3d3d3;
-    color: black
-    ;
+    color: black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .gif_container img {
+    transition: background-color 0.3s;
+}
+
+.no-button:hover {
+    background-color: #bfbfbf;
+}
+
+/* GIF container */
+.gif_container img {
     width: 300px;
     height: auto;
     border-radius: 10px;
     margin-top: 20px;
-  }
+}
 
+/* Music button */
 .music-btn {
     margin-top: 20px;
     padding: 10px 20px;
@@ -66,8 +82,27 @@ body {
     border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 .music-btn:hover {
     background-color: #e8435f;
+}
+
+/* Responsive for small screens */
+@media (max-width: 400px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .yes-button,
+    .no-button,
+    .music-btn {
+        font-size: 1.2em;
+        padding: 8px 16px;
+    }
+
+    .gif_container img {
+        width: 200px;
+    }
 }
