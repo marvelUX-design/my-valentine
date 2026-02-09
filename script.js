@@ -1,4 +1,3 @@
-// Wait for DOM to fully load
 document.addEventListener("DOMContentLoaded", () => {
 
     const messages = [
@@ -16,9 +15,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const music = document.getElementById("bg-music");
     const musicBtn = document.querySelector(".music-btn");
+    const tapOverlay = document.getElementById("tap-overlay");
 
     let isPlaying = false;
     let messageIndex = 0;
+
+    // Try autoplay on page load (desktop)
+    music.muted = false;
+    music.play().then(() => {
+        isPlaying = true;
+        musicBtn.innerHTML = "🔊 Mute Music";
+        // hide overlay if autoplay works
+        if(tapOverlay) tapOverlay.style.display = "none";
+    }).catch(err => {
+        // Autoplay blocked, show overlay for mobile
+        if(tapOverlay) tapOverlay.style.display = "flex";
+        console.log("Autoplay blocked:", err);
+    });
+
+    // Overlay click for mobile to start music
+    if(tapOverlay){
+        tapOverlay.addEventListener("click", () => {
+            music.muted = false;
+            music.play().catch(err => console.log(err));
+            isPlaying = true;
+            musicBtn.innerHTML = "🔊 Mute Music";
+            tapOverlay.style.display = "none";
+        });
+    }
 
     // Toggle background music
     window.toggleMusic = function() {
@@ -39,11 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const noButton = document.querySelector('.no-button');
         const yesButton = document.querySelector('.yes-button');
 
-        // Change No button text
         noButton.textContent = messages[messageIndex];
         messageIndex = (messageIndex + 1) % messages.length;
 
-        // Increase Yes button font size without cap
+        // Yes button font growth without cap
         const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
         yesButton.style.fontSize = `${currentSize * 1.5}px`;
     }
