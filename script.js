@@ -38,12 +38,14 @@ document.addEventListener("DOMContentLoaded", () => {
     window.handleNoClick = function() {
         const noButton = document.querySelector('.no-button');
         const yesButton = document.querySelector('.yes-button');
+
+        // Change No button text
         noButton.textContent = messages[messageIndex];
         messageIndex = (messageIndex + 1) % messages.length;
 
-        // Increase Yes button font size safely
+        // Increase Yes button font size without cap
         const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
-        yesButton.style.fontSize = `${Math.min(currentSize * 1.5, 100)}px`; // cap at 100px
+        yesButton.style.fontSize = `${currentSize * 1.5}px`;
     }
 
     // Handle "Yes" button clicks
