@@ -11,6 +11,24 @@ const messages = [
     "Just kidding, say yes please! ❤️"
 ];
 
+const music = document.getElementById("bg-music");
+const musicBtn = document.querySelector(".music-btn");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.muted = false;
+        music.play();
+        musicBtn.innerHTML = "🔊 Mute Music";
+        isPlaying = true;
+    } else {
+        music.pause();
+        musicBtn.innerHTML = "🔇 Unmute Music";
+        isPlaying = false;
+    }
+}
+
 let messageIndex = 0;
 
 function handleNoClick() {
@@ -24,29 +42,4 @@ function handleNoClick() {
 
 function handleYesClick() {
     window.location.href = "yes_page.html";
-
-}
-const music = document.getElementById("bg-music");
-const musicBtn = document.querySelector(".music-btn");
-
-let isPlaying = false;
-
-function toggleMusic() {
-    if (!isPlaying) {
-        music.play();
-        musicBtn.innerHTML = "🔊 Mute Music";
-        isPlaying = true;
-    } else {
-        music.pause();
-        musicBtn.innerHTML = "🔇 Unmute Music";
-        isPlaying = false;
-    }
-}
-
-function handleYesClick() {
-    alert("Yayyyy!!! 💖🥰");
-}
-
-function handleNoClick() {
-    alert("Oh nooo 😢 Try again!");
 }
