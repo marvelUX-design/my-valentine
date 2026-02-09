@@ -24,4 +24,29 @@ function handleNoClick() {
 
 function handleYesClick() {
     window.location.href = "yes_page.html";
+
+}
+const music = document.getElementById("bg-music");
+const musicBtn = document.querySelector(".music-btn");
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (!isPlaying) {
+        music.play();
+        musicBtn.innerHTML = "🔊 Mute Music";
+        isPlaying = true;
+    } else {
+        music.pause();
+        musicBtn.innerHTML = "🔇 Unmute Music";
+        isPlaying = false;
+    }
+}
+
+function handleYesClick() {
+    alert("Yayyyy!!! 💖🥰");
+}
+
+function handleNoClick() {
+    alert("Oh nooo 😢 Try again!");
 }
